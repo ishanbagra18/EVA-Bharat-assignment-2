@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Production build outputs
+dist/
+build/
+
+# SQLite Database Files
+*.db
+*.db-wal
+*.db-shm
+backend/sequencer.db
+backend/sequencer.db-wal
+backend/sequencer.db-shm
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Binaries & Logs
+*.log
+server
+server.exe
+*.exe
