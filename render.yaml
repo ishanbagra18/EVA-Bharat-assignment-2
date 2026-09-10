@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: media-sequencer-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./backend
+    rootDir: backend
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DB_PATH
+        value: ./sequencer.db
