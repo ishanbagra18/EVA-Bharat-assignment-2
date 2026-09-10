@@ -34,6 +34,6 @@ desktop.ini
 
 # Binaries & Logs
 *.log
-server
-server.exe
-*.exe
+/server
+/backend/server
+/backend/server.exe
