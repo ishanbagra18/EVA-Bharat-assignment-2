@@ -2,15 +2,12 @@ FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
 
-# Support building from either repo root or backend context
-COPY go.mod* go.sum* backend/go.mod* backend/go.sum* ./
-RUN go mod download
-
 COPY . .
-RUN if [ -d "./cmd/server" ]; then \
-        CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o server ./cmd/server; \
+
+RUN if [ -d "./backend" ]; then \
+        cd ./backend && go mod download && CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /app/server ./cmd/server; \
     else \
-        CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o server ./backend/cmd/server; \
+        go mod download && CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /app/server ./cmd/server; \
     fi
 
 FROM alpine:latest
